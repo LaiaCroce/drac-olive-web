@@ -12,6 +12,7 @@ function Navbar() {
         <Link to="/">Inici</Link>
         <Link to="/colla">Colla</Link>
         <Link to="/events">Agenda</Link>
+        <Link to="/galeria">Galeria</Link>
         <Link to="/merch">Merch</Link>
       </div>
     </nav>
