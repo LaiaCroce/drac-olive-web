@@ -1,0 +1,170 @@
+.drac-page {
+  padding-top: 80px;
+  background: var(--bg);
+}
+
+/* HERO */
+
+.drac-hero {
+  min-height: 80vh;
+
+  display: flex;
+  align-items: center;
+
+  padding: 80px 40px;
+
+  background:
+    linear-gradient(to right, rgba(5,5,5,0.95), rgba(5,5,5,0.5)),
+    radial-gradient(circle at right, rgba(51,136,44,0.25), transparent 40%),
+    url("https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1600&auto=format&fit=crop");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.drac-hero-content {
+  max-width: 800px;
+}
+
+.drac-hero p {
+  color: var(--green-light);
+
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.drac-hero h1 {
+  margin: 10px 0;
+
+  font-size: clamp(5rem, 12vw, 10rem);
+  line-height: 0.9;
+
+  text-transform: uppercase;
+}
+
+.drac-hero span {
+  color: var(--text-soft);
+
+  font-size: 1.3rem;
+}
+
+/* HISTORY */
+
+.drac-history {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  min-height: 700px;
+}
+
+.drac-history-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 80px;
+}
+
+.section-kicker {
+  color: var(--green-light);
+
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.drac-history h2 {
+  margin: 10px 0 30px;
+
+  font-size: clamp(3rem, 7vw, 5rem);
+  line-height: 0.95;
+
+  text-transform: uppercase;
+}
+
+.drac-history p {
+  color: var(--text-soft);
+
+  line-height: 1.8;
+}
+
+.drac-history-image {
+  background:
+    linear-gradient(to bottom, rgba(5,5,5,0.2), rgba(5,5,5,0.8)),
+    url("https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1200&auto=format&fit=crop");
+
+  background-size: cover;
+  background-position: center;
+}
+
+/* STATS */
+
+.drac-stats {
+  padding: 100px 40px;
+}
+
+.drac-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+
+  margin-top: 40px;
+}
+
+.drac-stat {
+  padding: 40px;
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(to bottom right, rgba(51,136,44,0.15), transparent),
+    var(--bg-soft);
+}
+
+.drac-stat h3 {
+  margin: 0 0 15px;
+
+  color: var(--text-soft);
+
+  text-transform: uppercase;
+}
+
+.drac-stat span {
+  color: var(--yellow);
+
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+
+  .drac-history {
+    grid-template-columns: 1fr;
+  }
+
+  .drac-history-image {
+    min-height: 400px;
+  }
+
+  .drac-history-text {
+    padding: 50px 24px;
+  }
+
+  .drac-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+
+  .drac-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .drac-hero {
+    padding: 120px 24px 80px;
+  }
+}

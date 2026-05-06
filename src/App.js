@@ -6,6 +6,7 @@ import Colla from "./pages/Colla";
 import Events from "./pages/Events";
 import Merch from "./pages/Merch";
 import Gallery from "./pages/Gallery";
+import Drac from "./pages/Drac";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/colla" element={<Colla />} />
+        <Route path="/drac" element={<Drac />} />
         <Route path="/events" element={<Events />} />
         <Route path="/galeria" element={<Gallery />} />
         <Route path="/merch" element={<Merch />} />

@@ -11,6 +11,7 @@ function Navbar() {
       <div className="navbar-links">
         <Link to="/">Inici</Link>
         <Link to="/colla">Colla</Link>
+        <Link to="/drac">Drac Olivé</Link>
         <Link to="/events">Agenda</Link>
         <Link to="/galeria">Galeria</Link>
         <Link to="/merch">Merch</Link>
