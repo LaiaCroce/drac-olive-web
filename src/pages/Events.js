@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { db } from "../services/firebase";
-import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, where, Timestamp } from "firebase/firestore";
 import "./Events.css";
 
 export default function Events() {
@@ -8,27 +8,33 @@ export default function Events() {
 
   useEffect(() => {
   const fetchEvents = async () => {
-    try {
-      const today = new Date().toISOString().split("T")[0];
+  try {
+    const today = Timestamp.now();
+    
+    const eventsQuery = query(
+      collection(db,"events"),
+      where("data", ">=", today),
+      orderBy("data", "asc")
+    );
+    
+    const querySnapshot = await getDocs(eventsQuery);
 
-      const eventsQuery = query(
-        collection(db, "events"),
-        where("data", ">=", today),
-        orderBy("data", "asc")
-      );
+    console.log("Documents trobats:", querySnapshot.size);
 
-      const querySnapshot = await getDocs(eventsQuery);
+    querySnapshot.forEach((doc) => {
+      console.log("Document:", doc.id, doc.data());
+    });
 
-      const data = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
+    const data = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
 
-      setEvents(data);
-    } catch (error) {
-      console.error("Error carregant events:", error);
-    }
-  };
+    setEvents(data);
+  } catch (error) {
+    console.error("Error carregant events:", error);
+  }
+};
 
   fetchEvents();
 }, []);
@@ -48,7 +54,9 @@ export default function Events() {
           events.map((e) => (
             <article className="event-card" key={e.id}>
               <div className="event-date">
-                <span>{e.data}</span>
+                <span>{e.data.toDate
+                  ? e.data.toDate().toLocaleDateString("ca-ES")
+                  : e.data}</span>
               </div>
 
               <div className="event-content">
