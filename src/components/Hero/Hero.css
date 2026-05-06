@@ -1,0 +1,65 @@
+.hero {
+  min-height: 100vh;
+  padding: 120px 40px 80px;
+
+  display: flex;
+  align-items: center;
+
+  background:
+    linear-gradient(to right, rgba(5, 5, 5, 0.95), rgba(5, 5, 5, 0.45)),
+    radial-gradient(circle at 70% 40%, rgba(247, 136, 23, 0.25), transparent 35%),
+    var(--bg);
+}
+
+.hero-content {
+  max-width: 760px;
+}
+
+.hero-kicker {
+  color: var(--green-light);
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(4rem, 10vw, 9rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.hero h1 span {
+  color: var(--green-light);
+}
+
+.hero-text {
+  max-width: 520px;
+  margin: 24px 0;
+  color: var(--text-soft);
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background: var(--green-primary);
+  color: white;
+}
+
+.btn-secondary {
+  border: 2px solid var(--orange);
+  color: var(--text);
+}
