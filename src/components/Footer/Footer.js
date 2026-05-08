@@ -14,7 +14,7 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2026 Drac Olivé · Cultura popular i foc | Tots els drets reservats | creat i fet amb molt ❤️‍🔥 by LaiaCroce</p>
+        <p>© 2026 Drac Olivé · Cultura popular i foc | Tots els drets reservats | creat i fet amb molt ❤️‍🔥 by <a style={{color:"#3BB134"}} href="https://github.com/LaiaCroce">@LaiaCroce</a></p>
       </div>
     </footer>
   );
