@@ -1,0 +1,61 @@
+.admin-dashboard {
+  min-height: 100vh;
+  padding: 120px 40px 80px;
+  background: var(--bg);
+}
+
+.admin-dashboard-header {
+  margin-bottom: 50px;
+}
+
+.admin-dashboard-header p {
+  color: var(--green-light);
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.admin-dashboard-header h1 {
+  margin: 10px 0;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.admin-dashboard-header span {
+  color: var(--text-soft);
+  font-size: 1.2rem;
+}
+
+.admin-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.admin-dashboard-card {
+  padding: 32px;
+  min-height: 220px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background:
+    linear-gradient(to bottom right, rgba(51, 136, 44, 0.18), transparent),
+    var(--bg-soft);
+}
+
+.admin-dashboard-card h2 {
+  margin: 0 0 14px;
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+
+.admin-dashboard-card p {
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .admin-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

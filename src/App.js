@@ -8,6 +8,7 @@ import Merch from "./pages/Merch";
 import Gallery from "./pages/Gallery";
 import Drac from "./pages/Drac";
 import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/galeria" element={<Gallery />} />
         <Route path="/merch" element={<Merch />} />
         <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
   );
