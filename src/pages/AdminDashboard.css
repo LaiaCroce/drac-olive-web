@@ -54,6 +54,25 @@
   line-height: 1.6;
 }
 
+.admin-logout {
+  margin-top: 24px;
+  padding: 14px 20px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--orange);
+  color: white;
+
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.admin-logout:hover {
+  background: var(--yellow);
+  color: #000;
+}
+
 @media (max-width: 900px) {
   .admin-dashboard-grid {
     grid-template-columns: 1fr;
