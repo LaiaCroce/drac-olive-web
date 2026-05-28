@@ -73,6 +73,39 @@
   color: #000;
 }
 
+.admin-section {
+  margin-top: 70px;
+  padding: 40px;
+
+  border: 1px solid var(--border);
+  border-radius: 22px;
+
+  background:
+    linear-gradient(to bottom right, rgba(51, 136, 44, 0.12), transparent),
+    var(--bg-soft);
+}
+
+.admin-section-header {
+  margin-bottom: 30px;
+}
+
+.admin-section-header p {
+  margin: 0;
+
+  color: var(--green-light);
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.admin-section-header h2 {
+  margin: 8px 0 0;
+
+  color: var(--yellow);
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
 @media (max-width: 900px) {
   .admin-dashboard-grid {
     grid-template-columns: 1fr;

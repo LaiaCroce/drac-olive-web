@@ -3,13 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../../services/firebase";
 import "./AdminHeader.css";
 
-export default function AdminHeader() {
-
+export default function AdminHeader({ showBackButton = false }) {
   const navigate = useNavigate();
-
   const handleLogout = async () => {
     await signOut(auth);
-    navigate("/admin");
+    window.location.href = "/";
   };
 
   return (
@@ -20,10 +18,17 @@ export default function AdminHeader() {
         <h1>Admin</h1>
       </div>
 
-      <button onClick={handleLogout}>
-        Tancar sessió
-      </button>
-
+      <div className="admin-header-actions">
+        {showBackButton && (
+          <button className="admin-back-button" onClick={() => navigate("/admin/dashboard")}>
+            ← Tornar al panell
+          </button>
+        )}
+        <button onClick={handleLogout}>
+          Tancar sessió
+        </button>
+      </div>
+     
     </header>
   );
 }
