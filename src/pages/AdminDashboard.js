@@ -1,4 +1,5 @@
 import "./AdminDashboard.css";
+import CreateEventForm from "../components/Admin/CreateEventForm";
 
 export default function AdminDashboard() {
   return (
@@ -25,6 +26,7 @@ export default function AdminDashboard() {
           <p>Gestionar productes de merchandising.</p>
         </div>
       </section>
+      <CreateEventForm />
     </main>
   );
 }

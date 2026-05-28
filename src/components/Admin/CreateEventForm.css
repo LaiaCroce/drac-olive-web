@@ -1,0 +1,61 @@
+.create-event-form {
+  margin-top: 50px;
+  max-width: 700px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 32px;
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(to bottom right, rgba(51, 136, 44, 0.16), transparent),
+    var(--bg-soft);
+}
+
+.create-event-form h2 {
+  margin: 0 0 10px;
+
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+
+.create-event-form input,
+.create-event-form textarea {
+  padding: 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background: #080808;
+  color: var(--text);
+
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.create-event-form textarea {
+  resize: vertical;
+}
+
+.create-event-form button {
+  padding: 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--green-primary);
+  color: white;
+
+  font-weight: bold;
+  text-transform: uppercase;
+
+  transition: 0.3s;
+}
+
+.create-event-form button:hover {
+  background: var(--green-light);
+}
