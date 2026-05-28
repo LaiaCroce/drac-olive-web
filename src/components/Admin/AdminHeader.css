@@ -1,0 +1,63 @@
+.admin-header {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 90px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 40px;
+
+  background: rgba(5, 5, 5, 0.92);
+
+  backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid var(--border);
+
+  z-index: 999;
+}
+
+.admin-header-left p {
+  margin: 0;
+
+  color: var(--green-light);
+
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.admin-header-left h1 {
+  margin: 5px 0 0;
+
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+.admin-header button {
+  padding: 14px 20px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--orange);
+
+  color: white;
+
+  font-weight: bold;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.admin-header button:hover {
+  background: var(--yellow);
+  color: black;
+}
