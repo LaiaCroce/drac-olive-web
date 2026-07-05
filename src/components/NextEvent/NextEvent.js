@@ -1,47 +1,55 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../../services/firebase";
-import { collection, getDocs, query, orderBy, where, Timestamp, limit } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  query,
+  orderBy,
+  where,
+  Timestamp,
+} from "firebase/firestore";
+import EventCalendar from "./EventCalendar";
 import "./NextEvent.css";
 
 function NextEvent() {
-  const [event, setEvent] = useState(null);
+  const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
-    const fetchNextEvent = async () => {
+    const fetchEvents = async () => {
       try {
         const today = Timestamp.now();
 
         const eventsQuery = query(
           collection(db, "events"),
           where("data", ">=", today),
-          orderBy("data", "asc"),
-          limit(1)
+          orderBy("data", "asc")
         );
 
         const querySnapshot = await getDocs(eventsQuery);
 
-        if (!querySnapshot.empty) {
-          const doc = querySnapshot.docs[0];
-          setEvent({
-            id: doc.id,
-            ...doc.data(),
-          });
-        }
+        const data = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setEvents(data);
+        setSelectedEvent(data[0] || null);
       } catch (error) {
-        console.error("Error carregant proper event:", error);
+        console.error("Error carregant propers events:", error);
       }
     };
 
-    fetchNextEvent();
+    fetchEvents();
   }, []);
 
-  if (!event) {
+  if (!selectedEvent) {
     return (
-      <section className="next-event">
+      <section className="next-event-section">
         <div className="next-event-intro">
-          <p>Propera sortida 🔥</p>
-          <h2>No hi ha sortides programades</h2>
+          <p>Properes actuacions 🔥</p>
+          <h2>No hi ha actuacions programades</h2>
           <Link to="/events" className="btn btn-secondary">
             Veure agenda
           </Link>
@@ -50,36 +58,61 @@ function NextEvent() {
     );
   }
 
-  const eventDate = event.data.toDate();
+  const eventDate = selectedEvent.data.toDate();
 
   return (
-    <section className="next-event">
-      <div className="next-event-intro">
-        <p>Propera sortida 🔥</p>
-        <h2>No et perdis el proper correfoc!</h2>
-        <Link to="/events" className="btn btn-secondary">
-          Veure agenda
-        </Link>
-      </div>
+    <section className="next-event-section">
+      <div className="next-event-layout">
+        <div className="next-event-intro">
+          <p>Properes actuacions 🔥</p>
+          <h2>No et perdis el proper foc!</h2>
+          <span>
+            Consulta el calendari i descobreix totes les actuacions que tenim
+            preparades.
+          </span>
 
-      <div className="next-event-card">
-        <div className="next-event-date">
-          <span>{eventDate.getDate()}</span>
-          <small>
-            {eventDate.toLocaleDateString("ca-ES", { month: "short" })}
-          </small>
+          <Link to="/events" className="btn btn-secondary">
+            Veure agenda →
+          </Link>
         </div>
 
-        <div className="next-event-info">
-          <h3>{event.titol}</h3>
-          <p>📍 {event.lloc}</p>
-        </div>
+        <article className="next-event-card">
+          <p className="next-event-label">Propera actuació</p>
 
-        <div className="next-event-time">
-          {eventDate.toLocaleTimeString("ca-ES", { 
-            hour: "2-digit", 
-            minute: "2-digit" })}
-        </div>
+          <div className="next-event-card-content">
+            <div className="next-event-date">
+              <strong>{eventDate.getDate()}</strong>
+              <small>
+                {eventDate.toLocaleDateString("ca-ES", { month: "short" })}
+              </small>
+            </div>
+
+            <div className="next-event-info">
+              <h3>{selectedEvent.titol}</h3>
+              <p>📍 {selectedEvent.lloc}</p>
+              <p>
+                🕒{" "}
+                {eventDate.toLocaleTimeString("ca-ES", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </p>
+            </div>
+          </div>
+
+          <Link
+            to={`/events#event-${selectedEvent.id}`}
+            className="next-event-detail"
+          >
+            Veure detall →
+          </Link>
+        </article>
+
+        <EventCalendar
+          events={events}
+          selectedEvent={selectedEvent}
+          onSelectEvent={setSelectedEvent}
+        />
       </div>
     </section>
   );

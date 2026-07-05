@@ -52,7 +52,7 @@ export default function Events() {
           <p className="events-empty">No hi ha esdeveniments encara.</p>
         ) : (
           events.map((e) => (
-            <article className="event-card" key={e.id}>
+            <article className="event-card" id={`event-${e.id}`} key={e.id}>
               <div className="event-date">
                 <span>{e.data.toDate
                   ? e.data.toDate().toLocaleDateString("ca-ES")
