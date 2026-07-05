@@ -1,0 +1,28 @@
+.admin-layout {
+  min-height: 100vh;
+  padding: 140px 40px 80px;
+  background: var(--bg);
+}
+
+.admin-layout-header {
+  margin-bottom: 50px;
+}
+
+.admin-layout-header p {
+  color: var(--green-light);
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.admin-layout-header h1 {
+  margin: 10px 0;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.admin-layout-header span {
+  color: var(--text-soft);
+  font-size: 1.2rem;
+}
