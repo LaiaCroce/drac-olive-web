@@ -99,13 +99,6 @@ function NextEvent() {
               </p>
             </div>
           </div>
-
-          <Link
-            to={`/events#event-${selectedEvent.id}`}
-            className="next-event-detail"
-          >
-            Veure detall →
-          </Link>
         </article>
 
         <EventCalendar
