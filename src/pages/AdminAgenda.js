@@ -1,36 +1,59 @@
 import { useState } from "react";
-import AdminHeader from "../components/Admin/AdminHeader";
+import AdminLayout from "../components/Admin/AdminLayout";
 import CreateEventForm from "../components/Admin/CreateEventForm";
 import EventsList from "../components/Admin/EventsList";
-import "./AdminDashboard.css";
 
 export default function AdminAgenda() {
   const [eventToEdit, setEventToEdit] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
-  
+  const [showForm, setShowForm] = useState(false);
+
   const refreshEvents = () => {
-    setRefreshKey(prev => prev + 1);
-  }
+    setRefreshKey((prev) => prev + 1);
+  };
+
+  const handleNewEvent = () => {
+    setEventToEdit(null);
+    setShowForm(true);
+  };
+
+  const handleEditEvent = (event) => {
+    setEventToEdit(event);
+    setShowForm(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const closeForm = () => {
+    setEventToEdit(null);
+    setShowForm(false);
+  };
 
   return (
-    <main className="admin-dashboard">
-      <AdminHeader showBackButton />
+    <AdminLayout
+      title="Agenda"
+      subtitle="Crea, edita i elimina esdeveniments del Drac Olivé."
+    >
+      {!showForm && (
+        <button className="admin-main-button" onClick={handleNewEvent}>
+          + Nou esdeveniment
+        </button>
+      )}
 
-      <section className="admin-dashboard-header">
-        <p>Gestió admin</p>
-        <h1>Agenda</h1>
-        <span>Crea, edita i elimina esdeveniments del Drac Olivé.</span>
-      </section>
+      {showForm && (
+        <CreateEventForm
+          eventToEdit={eventToEdit}
+          clearEdit={closeForm}
+          onEventSaved={() => {
+            refreshEvents();
+            closeForm();
+          }}
+        />
+      )}
 
-      <CreateEventForm 
-        eventToEdit={eventToEdit}
-        clearEdit={() => setEventToEdit(null)}
-        onEventSaved={refreshEvents}
+      <EventsList
+        key={refreshKey}
+        onEditEvent={handleEditEvent}
       />
-      <EventsList 
-      key={refreshKey}
-      onEditEvent={setEventToEdit}
-      />
-    </main>
+    </AdminLayout>
   );
 }
