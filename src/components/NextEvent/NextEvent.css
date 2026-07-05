@@ -44,7 +44,8 @@
 .next-event-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 40px;
   min-height: 360px;
   padding: 36px;
   border: 1px solid rgba(255, 210, 72, 0.35);
@@ -67,6 +68,7 @@
   grid-template-columns: 120px 1fr;
   gap: 28px;
   align-items: center;
+  flex: 1;
 }
 
 .next-event-date {
@@ -98,18 +100,6 @@
 .next-event-info p {
   margin: 10px 0;
   color: var(--text-soft);
-}
-
-.next-event-detail {
-  margin-top: 30px;
-  padding: 16px 22px;
-  border: 1px solid var(--green-light);
-  border-radius: 10px;
-  color: var(--text);
-  text-align: center;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: 0.3s;
 }
 
 .next-event-detail:hover {
