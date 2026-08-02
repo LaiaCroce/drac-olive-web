@@ -1,3 +1,7 @@
+/* =========================================================
+   NAVBAR GENERAL
+   ========================================================= */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -8,57 +12,113 @@
   height: 88px;
   padding: 0 40px;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  column-gap: 30px;
 
   background: rgba(5, 5, 5, 0.94);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
   border-bottom: 1px solid var(--border);
+
+  transition:
+    height 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-/* LOGO */
+.navbar--scrolled {
+  height: 72px;
 
-.navbar-logo {
+  background: rgba(5, 5, 5, 0.98);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* =========================================================
+   COLUMNA ESQUERRA: LOGO
+   ========================================================= */
+
+.navbar-left {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+
+  min-width: 0;
+}
+
+.navbar-logo {
+  display: inline-flex;
+  align-items: center;
+
   flex-shrink: 0;
 }
 
 .navbar-logo img {
   display: block;
+
   width: auto;
-  height: 62px;
+  height: 64px;
+
   object-fit: contain;
 
   transition:
+    height 0.3s ease,
     transform 0.25s ease,
+    filter 0.25s ease,
     opacity 0.25s ease;
+}
+
+.navbar--scrolled .navbar-logo img {
+  height: 52px;
 }
 
 .navbar-logo:hover img {
   transform: scale(1.04);
-  opacity: 0.9;
+  filter:
+    drop-shadow(0 0 5px rgba(255, 210, 72, 0.65))
+    drop-shadow(0 0 14px rgba(255, 210, 72, 0.25));
 }
 
-/* ENLLAÇOS */
+/* =========================================================
+   COLUMNA CENTRAL: NAVEGACIÓ
+   ========================================================= */
+
+.navbar-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .navbar-links {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: clamp(14px, 1.8vw, 28px);
+  justify-content: center;
+
+  gap: clamp(14px, 1.55vw, 27px);
 }
 
-.navbar-links a {
+.navbar-links > a,
+.navbar-dropdown-trigger {
   position: relative;
 
+  padding: 10px 0;
+
+  border: 0;
+  background: transparent;
+
   color: var(--text-soft);
-  font-size: 0.95rem;
-  font-weight: 600;
+
+  font-family: inherit;
+  font-size: clamp(0.72rem, 0.85vw, 0.95rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   white-space: nowrap;
+
+  cursor: pointer;
 
   transition: color 0.25s ease;
 }
@@ -69,7 +129,7 @@
 
   position: absolute;
   left: 0;
-  bottom: -9px;
+  bottom: 0;
 
   width: 100%;
   height: 2px;
@@ -77,22 +137,28 @@
   background: var(--green-light);
 
   transform: scaleX(0);
-  transform-origin: left;
+  transform-origin: center;
+
   transition: transform 0.25s ease;
 }
 
-.navbar-links a:hover,
-.navbar-links a.active {
+.navbar-links > a:hover,
+.navbar-links > a.active,
+.navbar-dropdown-trigger:hover,
+.navbar-dropdown-trigger.active {
   color: var(--text);
 }
 
 .navbar-links > a:hover::after,
 .navbar-links > a.active::after,
-.navbar-dropdown:hover .navbar-dropdown-trigger::after {
+.navbar-dropdown-trigger:hover::after,
+.navbar-dropdown-trigger.active::after {
   transform: scaleX(1);
 }
 
-/* DESPLEGABLE LA COLLA */
+/* =========================================================
+   DESPLEGABLE "LA COLLA"
+   ========================================================= */
 
 .navbar-dropdown {
   position: relative;
@@ -101,27 +167,44 @@
 .navbar-dropdown-trigger {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
+}
+
+.navbar-dropdown-arrow {
+  display: inline-block;
+
+  color: var(--green-light);
+
+  transition: transform 0.22s ease;
+}
+
+.navbar-dropdown:hover .navbar-dropdown-arrow,
+.navbar-dropdown:focus-within .navbar-dropdown-arrow,
+.navbar-dropdown--open .navbar-dropdown-arrow {
+  transform: rotate(180deg);
 }
 
 .navbar-dropdown-menu {
   position: absolute;
-  top: calc(100% + 22px);
+  top: calc(100% + 17px);
   left: 50%;
 
-  min-width: 175px;
+  min-width: 180px;
   padding: 10px;
 
   display: flex;
   flex-direction: column;
   gap: 4px;
 
-  background: rgba(8, 8, 8, 0.98);
+  background: rgba(8, 8, 8, 0.99);
   border: 1px solid var(--border);
   border-radius: 12px;
 
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.42);
+
   opacity: 0;
   visibility: hidden;
+
   transform: translate(-50%, -8px);
 
   transition:
@@ -131,39 +214,384 @@
 }
 
 .navbar-dropdown:hover .navbar-dropdown-menu,
-.navbar-dropdown:focus-within .navbar-dropdown-menu {
+.navbar-dropdown:focus-within .navbar-dropdown-menu,
+.navbar-dropdown--open .navbar-dropdown-menu {
   opacity: 1;
   visibility: visible;
+
   transform: translate(-50%, 0);
 }
 
 .navbar-dropdown-menu a {
+  display: block;
+
   padding: 12px 14px;
+
   border-radius: 8px;
+
+  color: var(--text-soft);
+
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .navbar-dropdown-menu a:hover,
 .navbar-dropdown-menu a.active {
-  color: var(--green-light);
-  background: rgba(51, 136, 44, 0.14);
+  color: var(--yellow);
+  background: rgba(51, 136, 44, 0.15);
+
+  transform: translateX(3px);
 }
 
-/* RESPONSIVE PROVISIONAL */
+/* =========================================================
+   COLUMNA DRETA: XARXES SOCIALS
+   ========================================================= */
 
-@media (max-width: 1050px) {
+.navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  min-width: 0;
+}
+
+.navbar-socials,
+.navbar-mobile-socials {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border: 1px solid transparent;
+  border-radius: 50%;
+
+  color: var(--text-soft);
+
+  font-size: 1.18rem;
+
+  transition:
+    color 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    transform 0.22s ease,
+    filter 0.22s ease;
+}
+
+.social-link:hover {
+  color: white;
+  transform: translateY(-3px);
+}
+
+.social-link--instagram:hover {
+  border-color: #d62976;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(64, 93, 230, 0.35),
+      rgba(214, 41, 118, 0.35),
+      rgba(250, 126, 30, 0.35)
+    );
+
+  filter: drop-shadow(0 0 7px rgba(214, 41, 118, 0.55));
+}
+
+.social-link--tiktok:hover {
+  border-color: #25f4ee;
+  background: rgba(37, 244, 238, 0.12);
+
+  filter:
+    drop-shadow(2px 0 4px rgba(254, 44, 85, 0.6))
+    drop-shadow(-2px 0 4px rgba(37, 244, 238, 0.6));
+}
+
+.social-link--youtube:hover {
+  color: #ff0033;
+  border-color: #ff0033;
+  background: rgba(255, 0, 51, 0.12);
+
+  filter: drop-shadow(0 0 7px rgba(255, 0, 51, 0.5));
+}
+
+.social-link--fogosons {
+  border-color: rgba(255, 210, 72, 0.35);
+}
+
+.social-link--fogosons:hover {
+  border-color: var(--yellow);
+  background: rgba(255, 210, 72, 0.12);
+  filter: drop-shadow(0 0 7px rgba(255, 210, 72, 0.45));
+}
+
+.navbar-mobile-socials {
+  display: none;
+}
+
+/* =========================================================
+   BOTÓ HAMBURGUESA
+   ========================================================= */
+
+.navbar-toggle {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+  padding: 9px;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  cursor: pointer;
+}
+
+.navbar-toggle span {
+  width: 22px;
+  height: 2px;
+
+  background: var(--text);
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.navbar-toggle--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-toggle--open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggle--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================================
+   PANTALLES MITJANES
+   ========================================================= */
+
+@media (max-width: 1180px) {
   .navbar {
     padding: 0 24px;
+    column-gap: 18px;
   }
 
   .navbar-logo img {
-    height: 52px;
+    height: 56px;
+  }
+
+  .navbar--scrolled .navbar-logo img {
+    height: 48px;
   }
 
   .navbar-links {
-    gap: 14px;
+    gap: 13px;
   }
 
-  .navbar-links a {
-    font-size: 0.8rem;
+  .navbar-links > a,
+  .navbar-dropdown-trigger {
+    font-size: 0.72rem;
+  }
+
+  .navbar-socials {
+    gap: 8px;
+  }
+
+  .social-link {
+    width: 31px;
+    height: 31px;
+    font-size: 1rem;
+  }
+}
+
+/* =========================================================
+   MÒBIL I TAULETA
+   ========================================================= */
+
+@media (max-width: 930px) {
+  .navbar {
+    height: 76px;
+    padding: 0 20px;
+
+    grid-template-columns: 1fr auto;
+  }
+
+  .navbar--scrolled {
+    height: 68px;
+  }
+
+  .navbar-logo img,
+  .navbar--scrolled .navbar-logo img {
+    height: 52px;
+  }
+
+  .navbar-socials {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-center {
+    position: fixed;
+    top: 76px;
+    left: 0;
+
+    width: 100%;
+    max-height: calc(100vh - 76px);
+    padding: 28px 24px 36px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+
+    overflow-y: auto;
+
+    background: rgba(5, 5, 5, 0.99);
+    border-bottom: 1px solid var(--border);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-12px);
+
+    transition:
+      opacity 0.25s ease,
+      visibility 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .navbar--scrolled .navbar-center {
+    top: 68px;
+    max-height: calc(100vh - 68px);
+  }
+
+  .navbar-center--open {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+  }
+
+  .navbar-links {
+    width: 100%;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+
+  .navbar-links > a,
+  .navbar-dropdown-trigger {
+    width: 100%;
+    padding: 15px 6px;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border);
+
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  .navbar-links > a::after,
+  .navbar-dropdown-trigger::after {
+    display: none;
+  }
+
+  .navbar-dropdown-menu {
+    position: static;
+
+    width: 100%;
+    min-width: 0;
+    padding: 0 0 0 16px;
+
+    display: none;
+
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .navbar-dropdown:hover .navbar-dropdown-menu,
+  .navbar-dropdown:focus-within .navbar-dropdown-menu {
+    display: none;
+  }
+
+  .navbar-dropdown--open .navbar-dropdown-menu {
+    display: flex;
+    transform: none;
+  }
+
+  .navbar-dropdown-menu a {
+    padding: 14px 10px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .navbar-mobile-socials {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .navbar-mobile-socials .social-link {
+    width: 42px;
+    height: 42px;
+
+    border-color: var(--border);
+
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 16px;
+  }
+
+  .navbar-logo img,
+  .navbar--scrolled .navbar-logo img {
+    height: 48px;
+  }
+}
+
+/* Respecta persones que prefereixen menys moviment */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navbar *,
+  .navbar *::before,
+  .navbar *::after {
+    scroll-behavior: auto;
+    transition-duration: 0.01ms !important;
   }
 }
