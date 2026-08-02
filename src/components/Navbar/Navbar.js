@@ -107,6 +107,9 @@ function Navbar() {
           <NavLink to="/noticies" onClick={closeMenu}>
             Notícies
           </NavLink>
+          <NavLink to="/contacte" onClick={closeMenu}>
+            Contacte
+          </NavLink>
         </div>
         {/* En mòbil, les xarxes apareixen dins del menú */}
         <div className="navbar-mobile-socials">
