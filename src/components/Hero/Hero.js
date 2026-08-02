@@ -9,12 +9,17 @@ function Hero({
   secondaryButton,
   home = false,
 }) {
+  const hasButtons = primaryButton || secondaryButton;
+
   return (
-    <section className={`hero ${home ? "hero-home" : "hero-page"}`}>
+    <section className={`hero ${home ? "hero--home" : "hero--page"}`}>
       <div className="container hero-content">
 
         {kicker && (
-          <p className="hero-kicker">{kicker}</p>
+          <div className="hero-kicker">
+            {!home && <span className="hero-kicker-line" aria-hidden="true" />}
+            <p>{kicker}</p>
+          </div>
         )}
 
         <h1 className="hero-title">{title}</h1>
@@ -25,9 +30,8 @@ function Hero({
           </p>
         )}
 
-        {(primaryButton || secondaryButton) && (
+        {hasButtons&& (
           <div className="hero-buttons">
-
             {primaryButton && (
               <Link
                 to={primaryButton.link}
@@ -45,10 +49,8 @@ function Hero({
                 {secondaryButton.label}
               </Link>
             )}
-
           </div>
         )}
-
       </div>
     </section>
   );
