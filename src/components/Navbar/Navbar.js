@@ -4,19 +4,18 @@ import "./Navbar.css";
 function Navbar() {
   return (
     <nav className="navbar">
-      <Link to="/" className="navbar-logo">
-        🔥 Drac Olivé
+      <Link to="/" className="navbar-logo" aria-label="Anar a la pàgina d'inici">
+        <img src="/images/Logo.png" alt="Logo de la colla" />
       </Link>
 
       <div className="navbar-links">
-        <Link to="/">Inici</Link>
         <Link to="/qui-som">Qui som</Link>
         <Link to="/historia">Història</Link>
 
         <div className="navbar-dropdown">
-          <Link to="/colla" className="navbar-dropdown-trigger">
-            La colla ▾
-          </Link>
+          <NavLink to="/colla" className="navbar-dropdown-trigger">
+            La colla <span aria-hidden="true">⌄</span>
+          </NavLink>
 
           <div className="navbar-dropdown-menu">
             <Link to="/colla/piro">Piro</Link>
