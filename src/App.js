@@ -18,6 +18,7 @@ import Gallery from "./pages/Gallery";
 import Merch from "./pages/Merch";
 import Noticies from "./pages/Noticies";
 import Drac from "./pages/Drac";
+import Contacte from "./pages/Contacte";
 
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -46,6 +47,7 @@ function Layout() {
         <Route path="/events" element={<Events />} />
         <Route path="/galeria" element={<Gallery />} />
         <Route path="/merch" element={<Merch />} />
+        <Route path="/contacte" element={<Contacte />} />
         <Route path="/noticies" element={<Noticies />} />
         {/* Conservem la pàgina del Drac com a ruta interna */}
         <Route path="/drac" element={<Drac />} />
