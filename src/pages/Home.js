@@ -8,7 +8,24 @@ import StatsSection from "../components/Home/StatsSecion";
 export default function Home() {
   return (
     <>
-      <Hero />
+      <Hero
+        home
+        kicker="Foc, tradició i passió"
+        title={
+          <>
+            Drac <span>Olivé</span>
+          </>
+        }
+        description="Colla de foc d’Olesa de Montserrat. Cultura popular, bèstia i comunitat."
+        primaryButton={{
+          label: "Qui som",
+          link: "/qui-som",
+        }}
+        secondaryButton={{
+          label: "Properes actuacions",
+          link: "/events",
+        }}
+      />
       <NextEvent />
       <StorySection />
       <StatsSection />
