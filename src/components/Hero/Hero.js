@@ -1,29 +1,54 @@
 import { Link } from "react-router-dom";
 import "./Hero.css";
 
-function Hero() {
+function Hero({
+  kicker,
+  title,
+  description,
+  primaryButton,
+  secondaryButton,
+  home = false,
+}) {
   return (
-    <section className="hero">
-      <div className="hero-content">
-        <p className="hero-kicker">Foc, tradició i passió</p>
+    <section className={`hero ${home ? "hero-home" : "hero-page"}`}>
+      <div className="container hero-content">
 
-        <h1>
-          Drac <span>Olivé</span>
-        </h1>
+        {kicker && (
+          <p className="hero-kicker">{kicker}</p>
+        )}
 
-        <p className="hero-text">
-          Colla de foc d’Olesa de Montserrat. Cultura popular, bèstia i comunitat.
-        </p>
+        <h1 className="hero-title">{title}</h1>
 
-        <div className="hero-buttons">
-          <Link to="/colla" className="btn btn-primary">
-            Qui som
-          </Link>
+        {description && (
+          <p className="hero-text">
+            {description}
+          </p>
+        )}
 
-          <Link to="/events" className="btn btn-secondary">
-            Properes actuacions
-          </Link>
-        </div>
+        {(primaryButton || secondaryButton) && (
+          <div className="hero-buttons">
+
+            {primaryButton && (
+              <Link
+                to={primaryButton.link}
+                className="button-primary"
+              >
+                {primaryButton.label}
+              </Link>
+            )}
+
+            {secondaryButton && (
+              <Link
+                to={secondaryButton.link}
+                className="button-secondary"
+              >
+                {secondaryButton.label}
+              </Link>
+            )}
+
+          </div>
+        )}
+
       </div>
     </section>
   );
