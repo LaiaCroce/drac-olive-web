@@ -25,6 +25,13 @@ export default function Home() {
           label: "La nostra història",
           link: "/historia",
         }}
+        images={[
+          "/images/hero/drac-1.jpg",
+          "/images/hero/drac-2.jpg",
+          "/images/hero/drac-3.jpg",
+          "/images/hero/drac-4.jpg",
+        ]}
+        interval={5000}
       />
       <NextEvent />
       <StorySection />
