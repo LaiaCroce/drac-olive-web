@@ -1,69 +1,102 @@
-.stats-section{
+.stats-section {
+  padding: var(--space-xl) 0;
 
-    padding:120px 8%;
+  text-align: center;
 
-    text-align:center;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(51, 136, 44, 0.18),
+      transparent 52%
+    ),
+    var(--bg);
 }
 
-.stats-section p{
+.stats-section__eyebrow {
+  margin: 0;
 
-    color:var(--green-light);
+  color: var(--green-light);
 
-    font-weight:bold;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-.stats-section h2{
+.stats-section__title {
+  max-width: 850px;
+  margin: 20px auto 70px;
 
-    font-size:clamp(2.8rem,6vw,5rem);
+  color: var(--text);
 
-    margin:20px 0 80px;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 0.95;
+  text-transform: uppercase;
 }
 
-.stats-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:35px;
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
 }
 
-.stat-card{
+.stat-card {
+  padding: 45px 24px;
 
-    padding:45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
 
-    border-radius:20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
 
-    border:1px solid var(--border);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(51, 136, 44, 0.16),
+      transparent
+    ),
+    var(--bg-soft);
 
-    background:linear-gradient(145deg,#111,#182317);
+  box-shadow: var(--shadow-card);
 
-    transition:.35s;
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal);
 }
 
-.stat-card:hover{
-
-    transform:translateY(-10px);
-
-    border-color:#3BB134;
+.stat-card:hover {
+  border-color: var(--green-light);
+  transform: translateY(-8px);
 }
 
-.stat-card h3{
+.stat-card strong {
+  color: var(--yellow);
 
-    color:#FFD248;
-
-    font-size:4rem;
-
-    margin-bottom:15px;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1;
 }
 
-.stat-card span{
+.stat-card span {
+  color: var(--text-soft);
 
-    font-size:1.1rem;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+}
 
-    color:#bdbdbd;
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 550px) {
+  .stats-section {
+    padding: var(--space-lg) 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }
