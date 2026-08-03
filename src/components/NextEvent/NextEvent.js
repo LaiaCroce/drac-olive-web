@@ -48,8 +48,8 @@ function NextEvent() {
     return (
       <section className="next-event-section">
         <div className="next-event-intro">
-          <p>Properes actuacions 🔥</p>
-          <h2>No hi ha actuacions programades</h2>
+          {/*<p>Properes sortides</p>*/}
+          <h2>No hi ha sortides programades</h2>
           <Link to="/events" className="btn btn-secondary">
             Veure agenda
           </Link>
@@ -64,10 +64,10 @@ function NextEvent() {
     <section className="next-event-section">
       <div className="next-event-layout">
         <div className="next-event-intro">
-          <p>Properes actuacions 🔥</p>
-          <h2>No et perdis el proper foc!</h2>
+          {/*<p>Properes sortides</p>*/}
+          <h2>No et perdis el pròxim correfoc!</h2>
           <span>
-            Consulta el calendari i descobreix totes les actuacions que tenim
+            Consulta el calendari i descobreix totes les sortides que tenim
             preparades.
           </span>
 
@@ -77,7 +77,7 @@ function NextEvent() {
         </div>
 
         <article className="next-event-card">
-          <p className="next-event-label">Propera actuació</p>
+          <p className="next-event-label">propera sortida</p>
 
           <div className="next-event-card-content">
             <div className="next-event-date">
