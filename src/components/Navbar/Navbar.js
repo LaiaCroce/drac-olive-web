@@ -102,7 +102,7 @@ function Navbar() {
             Galeria
           </NavLink>
           <NavLink to="/merch" onClick={closeMenu}>
-            Merch
+            Merchan
           </NavLink>
           <NavLink to="/noticies" onClick={closeMenu}>
             Notícies
