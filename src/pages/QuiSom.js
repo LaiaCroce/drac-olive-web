@@ -19,7 +19,7 @@ export default function QuiSom() {
           "El Drac Olivé és una entitat formada per persones de diferents edats que comparteixen una mateixa passió: la cultura popular, el foc i la música.",
           "Cada actuació és el resultat del treball conjunt de tota la colla, tant en la preparació prèvia com durant els correfocs, cercaviles i trobades.",
         ]}
-        image=" "
+        image="/imatges/colla.jpg"
         imageAlt="Membres de la colla del Drac Olivé"
         button={{
           label: "Coneix la colla",

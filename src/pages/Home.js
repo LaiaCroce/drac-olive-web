@@ -26,10 +26,10 @@ export default function Home() {
           link: "/historia",
         }}
         images={[
-          "/images/hero/drac-1.jpg",
-          "/images/hero/drac-2.jpg",
-          "/images/hero/drac-3.jpg",
-          "/images/hero/drac-4.jpg",
+          "/imatges/hero/drac-1.jpg",
+          "/imatges/hero/drac-2.jpg",
+          "/imatges/hero/drac-3.jpg",
+          "/imatges/hero/drac-4.jpg",
         ]}
         interval={5000}
       />
