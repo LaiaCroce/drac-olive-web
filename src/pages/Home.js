@@ -22,8 +22,8 @@ export default function Home() {
           link: "/qui-som",
         }}
         secondaryButton={{
-          label: "Properes actuacions",
-          link: "/events",
+          label: "La nostra història",
+          link: "/historia",
         }}
       />
       <NextEvent />
