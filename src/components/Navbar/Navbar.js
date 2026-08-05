@@ -10,8 +10,6 @@ import "./Navbar.css";
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isCollaOpen, setIsCollaOpen] = useState(false);
-
   const location = useLocation();
 
   useEffect(() => {
@@ -29,12 +27,10 @@ function Navbar() {
 
   useEffect(() => {
     setIsMenuOpen(false);
-    setIsCollaOpen(false);
   }, [location.pathname]);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-    setIsCollaOpen(false);
   };
 
   return (
