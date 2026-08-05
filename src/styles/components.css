@@ -1,6 +1,32 @@
 .container {
-  width: min(calc(100% - 80px), var(--container-width));
+  width: min(
+    calc(100% - (var(--page-padding) * 2)),
+    var(--container-width)
+  );
+
   margin-inline: auto;
+}
+
+.content-narrow {
+  width: 100%;
+  max-width: var(--content-width);
+}
+
+.content-center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section {
+  padding-block: var(--space-xl);
+}
+
+.section--small {
+  padding-block: var(--space-lg);
+}
+
+.section--large {
+  padding-block: 150px;
 }
 
 .section {
@@ -67,6 +93,14 @@
 
 @media (max-width: 600px) {
   .container {
-    width: calc(100% - 40px);
+    width: calc(100% - (var(--page-padding-mobile) * 2));
+  }
+
+  .section {
+    padding-block: var(--space-lg);
+  }
+
+  .section--large {
+    padding-block: 100px;
   }
 }

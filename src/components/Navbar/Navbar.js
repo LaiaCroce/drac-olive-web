@@ -65,27 +65,19 @@ function Navbar() {
           <NavLink to="/historia" onClick={closeMenu}>
             Història
           </NavLink>
-          <div
-            className={`navbar-dropdown ${
-              isCollaOpen ? "navbar-dropdown--open" : ""
-            }`}
-          >
-            <button
-              type="button"
+          <div className="navbar-dropdown">
+            <NavLink
+              to="/colla"
               className={`navbar-dropdown-trigger ${
                 location.pathname.startsWith("/colla") ? "active" : ""
               }`}
-              onClick={() => setIsCollaOpen((current) => !current)}
-              aria-expanded={isCollaOpen}
+              onClick={closeMenu}
             >
               La colla
-              <span
-                className="navbar-dropdown-arrow"
-                aria-hidden="true"
-              >
+              <span className="navbar-dropdown-arrow" aria-hidden="true">
                 ▾
               </span>
-            </button>
+            </NavLink>
             <div className="navbar-dropdown-menu">
               <NavLink to="/colla/piro" onClick={closeMenu}>
                 Piro

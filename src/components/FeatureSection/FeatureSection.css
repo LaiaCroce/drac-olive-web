@@ -26,10 +26,11 @@
 }
 
 .feature-section__image-wrapper {
+  width: 100%;
+  min-height: 520px;
+
   position: relative;
   overflow: hidden;
-
-  min-height: 520px;
 
   border: 1px solid rgba(255, 210, 72, 0.32);
   border-radius: var(--radius-lg);
@@ -81,7 +82,8 @@
 }
 
 .feature-section__content {
-  max-width: 620px;
+  width: 100%;
+  max-width: var(--content-width);
 }
 
 .feature-section__eyebrow {
