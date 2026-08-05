@@ -45,8 +45,12 @@
 }
 
 .image-banner__content {
-  width: 100%;
-  max-width: 980px;
+  width: min(
+    calc(100% - (var(--page-padding) * 2)),
+    980px
+  );
+
+  margin-inline: auto;
 }
 
 .image-banner--center .image-banner__content {
@@ -110,5 +114,11 @@
 
   .image-banner__quote {
     font-size: clamp(2.4rem, 12vw, 4.5rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .image-banner__content {
+    width: calc(100% - (var(--page-padding-mobile) * 2));
   }
 }

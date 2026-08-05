@@ -11,8 +11,13 @@
   --text-soft: #bfbfbf;
 
   /* Layout */
-  --container: 1280px;
+  --container-width: 1200px;
+  --content-width: 720px;
   --navbar-height: 88px;
+
+  /* Padding lateral */
+  --page-padding: 40px;
+  --page-padding-mobile: 20px;
 
   /* Radius */
   --radius-sm: 10px;

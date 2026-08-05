@@ -108,10 +108,12 @@
   position:relative;
   z-index:5;
 
-  width:100%;
-  max-width:720px;
+  width: min(
+    calc(100% - (var(--page-padding) * 2)),
+    var(--container-width)
+  );
 
-  margin-left:8%;
+  margin-inline: auto;
 }
 
 /* ===========================
@@ -165,7 +167,6 @@
   margin-top:34px;
 
   font-size:1.25rem;
-
   line-height:1.8;
 
   color:rgba(255,255,255,.88);
@@ -289,13 +290,9 @@
 =========================== */
 
 @media (max-width:900px){
-
-.hero-content{
-
-margin:0 30px;
-
-max-width:100%;
-}
+  .hero-content {
+    width: calc(100% - (var(--page-padding-mobile) * 2));
+  }
 
 .hero-title{
 
