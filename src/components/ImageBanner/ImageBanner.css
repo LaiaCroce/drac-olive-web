@@ -1,0 +1,114 @@
+.image-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  min-height: 560px;
+  padding: var(--space-xl) 0;
+
+  display: flex;
+  align-items: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(51, 136, 44, 0.15),
+      transparent 45%
+    ),
+    var(--bg);
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.image-banner__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(5, 5, 5, 0.3),
+      rgba(5, 5, 5, 0.76)
+    ),
+    linear-gradient(
+      to right,
+      rgba(5, 5, 5, 0.72),
+      rgba(5, 5, 5, 0.25),
+      rgba(5, 5, 5, 0.72)
+    );
+}
+
+.image-banner__content {
+  width: 100%;
+  max-width: 980px;
+}
+
+.image-banner--center .image-banner__content {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.image-banner--left .image-banner__content {
+  margin-left: 0;
+  text-align: left;
+}
+
+.image-banner__eyebrow {
+  margin: 0 0 18px;
+
+  color: var(--green-light);
+
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.image-banner__quote {
+  max-width: 900px;
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: clamp(2.8rem, 6vw, 6rem);
+  font-weight: 800;
+  line-height: 0.95;
+  text-transform: uppercase;
+
+  text-shadow: 0 8px 35px rgba(0, 0, 0, 0.55);
+}
+
+.image-banner--center .image-banner__quote {
+  margin-inline: auto;
+}
+
+.image-banner__text {
+  max-width: 680px;
+  margin: 28px 0 0;
+
+  color: rgba(255, 255, 255, 0.84);
+
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.image-banner--center .image-banner__text {
+  margin-inline: auto;
+}
+
+@media (max-width: 700px) {
+  .image-banner {
+    min-height: 440px;
+    padding: var(--space-lg) 0;
+  }
+
+  .image-banner__quote {
+    font-size: clamp(2.4rem, 12vw, 4.5rem);
+  }
+}
