@@ -1,6 +1,6 @@
 import Hero from "../components/Hero/Hero";
 import Timeline from "../components/Timeline/Timeline";
-import FinalCTA from "../components/FinalCTA/FinalCTA";
+import ImageBanner from "../components/ImageBanner/ImageBanner";
 import Footer from "../components/Footer/Footer";
 
 const provisionalHistory = [
@@ -40,8 +40,12 @@ export default function Historia() {
       />
 
       <Timeline events={provisionalHistory} />
-
-      <FinalCTA />
+      <ImageBanner
+        eyebrow="Drac Olivé"
+        quote="La cultura popular es viu al carrer"
+        text="Aquest espai quedarà preparat per afegir més endavant una fotografia representativa de la colla."
+        image=" "
+        />
       <Footer />
     </main>
   );
