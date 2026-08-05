@@ -1,5 +1,5 @@
 .container {
-  width: min(100% - 48px, var(--container-width));
+  width: min(calc(100% - 80px), var(--container-width));
   margin-inline: auto;
 }
 
@@ -63,4 +63,10 @@
   border-radius: var(--radius-md);
   background: var(--bg-soft);
   box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: calc(100% - 40px);
+  }
 }
