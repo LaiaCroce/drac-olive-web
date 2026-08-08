@@ -1,4 +1,5 @@
 import Hero from "../components/Hero/Hero";
+import IntroSection from "../components/IntroSection/IntroSection";
 import FeatureSection from "../components/FeatureSection/FeatureSection";
 import ImageBanner from "../components/ImageBanner/ImageBanner";
 import Footer from "../components/Footer/Footer";
@@ -10,6 +11,12 @@ export default function Colla() {
         kicker="Foc i ritme"
         title="La colla"
         description="Les persones que fan possible el Drac Olivé. Una colla formada per dues seccions que treballen juntes a cada actuació: Piro i Fogosons."
+      />
+
+      <IntroSection
+        eyebrow="Una sola colla"
+        title="Molt més que foc"
+        text="El Drac Olivé no seria possible sense totes les persones que formen la colla. Darrere de cada actuació hi ha hores de preparació, assajos i moltes ganes de mantenir viva la cultura popular. Piro i Fogosons comparteixen una mateixa passió: fer vibrar els carrers d’Olesa."
       />
 
       <FeatureSection
