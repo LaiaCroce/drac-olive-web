@@ -1,32 +1,39 @@
-import "./Gallery.css";
+import Hero from "../components/Hero/Hero";
+import IntroSection from "../components/IntroSection/IntroSection";
+import GalleryGrid from "../components/GalleryGrid/GalleryGrid";
+import ImageBanner from "../components/ImageBanner/ImageBanner";
+import Footer from "../components/Footer/Footer";
 
-export default function Gallery() {
-  const images = [
-    "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
-  ];
+export default function Galeria(){
 
-  return (
-    <main className="gallery-page">
-      <section className="gallery-hero">
-        <p>Moments de foc</p>
-        <h1>Galeria</h1>
-        <span>
-          Descobreix els correfocs, actuacions i moments del Drac Olivé.
-        </span>
-      </section>
+    return(
 
-      <section className="gallery-grid">
-        {images.map((image, index) => (
-          <div className="gallery-item" key={index}>
-            <img src={image} alt={`Galeria ${index}`} />
-          </div>
-        ))}
-      </section>
-    </main>
-  );
+        <main>
+
+            <Hero
+                kicker="Drac Olivé"
+                title="Galeria"
+                description="Un recull dels nostres millors moments."
+            />
+
+            <IntroSection
+                eyebrow="Moments"
+                title="El foc en imatges"
+                text="Aquí hi aniran totes les fotografies de la colla classificades per categories."
+            />
+
+            <GalleryGrid/>
+
+            <ImageBanner
+                eyebrow="Moments únics"
+                quote="Cada actuació deixa una història."
+                text="Aquí més endavant hi posarem una fotografia espectacular."
+            />
+
+            <Footer/>
+
+        </main>
+
+    )
+
 }
