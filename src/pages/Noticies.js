@@ -1,13 +1,33 @@
+import Hero from "../components/Hero/Hero";
+import IntroSection from "../components/IntroSection/IntroSection";
+import NewsGrid from "../components/NewsGrid/NewsGrid";
+import ImageBanner from "../components/ImageBanner/ImageBanner";
+import Footer from "../components/Footer/Footer";
+
 export default function Noticies() {
   return (
-    <main style={{ padding: "140px 40px 80px", minHeight: "100vh" }}>
-      <p style={{ color: "var(--green-light)", textTransform: "uppercase" }}>
-        Actualitat
-      </p>
+    <main>
+      <Hero
+        kicker="Drac Olivé"
+        title="Notícies"
+        description="Segueix tota l'actualitat de la colla."
+      />
 
-      <h1 style={{ fontSize: "clamp(4rem, 10vw, 8rem)", margin: 0 }}>
-        Notícies
-      </h1>
+      <IntroSection
+        eyebrow="Actualitat"
+        title="Les últimes novetats"
+        text="Aquí publicarem les notícies, comunicats i novetats relacionades amb el Drac Olivé i Fogosons."
+      />
+
+      <NewsGrid />
+
+      <ImageBanner
+        eyebrow="Sempre en moviment"
+        quote="Cada actuació és una nova història."
+        text="Aquest espai quedarà preparat per incorporar una fotografia destacada."
+      />
+
+      <Footer />
     </main>
   );
 }
