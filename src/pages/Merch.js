@@ -1,31 +1,33 @@
+import Hero from "../components/Hero/Hero";
+import IntroSection from "../components/IntroSection/IntroSection";
+import MerchGrid from "../components/MerchGrid/MerchGrid";
+import ImageBanner from "../components/ImageBanner/ImageBanner";
+import Footer from "../components/Footer/Footer";
+
 export default function Merch() {
-  const products = [
-    {
-      id: 1,
-      nom: "Samarreta Drac Olivé",
-      preu: "15€",
-      descripcio: "Samarreta oficial de la colla.",
-    },
-    {
-      id: 2,
-      nom: "Dessuadora Drac Olivé",
-      preu: "30€",
-      descripcio: "Dessuadora amb el disseny del drac.",
-    },
-  ];
-
   return (
-    <div>
-      <h1>Merchandising</h1>
-      <p>Productes oficials del Drac Olivé.</p>
+    <main>
+      <Hero
+        kicker="Drac Olivé"
+        title="Merch"
+        description="Porta una mica del Drac amb tu. Descobreix el nostre merchandising."
+      />
 
-      {products.map((product) => (
-        <div key={product.id}>
-          <h3>{product.nom}</h3>
-          <p>{product.descripcio}</p>
-          <strong>{product.preu}</strong>
-        </div>
-      ))}
-    </div>
+      <IntroSection
+        eyebrow="Merchandising"
+        title="Porta el Drac amb tu"
+        text="Aquí podràs veure els productes de merchandising de la colla. Més endavant hi afegirem les fotografies, preus i informació definitiva."
+      />
+
+      <MerchGrid />
+
+      <ImageBanner
+        eyebrow="Drac Olivé"
+        quote="Foc, cultura i identitat"
+        text="Aquest espai quedarà preparat per incorporar una fotografia del merchandising o de la colla."
+      />
+
+      <Footer />
+    </main>
   );
 }
