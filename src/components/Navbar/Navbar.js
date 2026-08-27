@@ -61,6 +61,9 @@ function Navbar() {
           <NavLink to="/historia" onClick={closeMenu}>
             Història
           </NavLink>
+          <NavLink to="/drac">
+            El Drac
+          </NavLink>
           <div className="navbar-dropdown">
             <NavLink
               to="/colla"
@@ -94,6 +97,9 @@ function Navbar() {
           </NavLink>
           <NavLink to="/noticies" onClick={closeMenu}>
             Notícies
+          </NavLink>
+          <NavLink to="/recursos" onClick={closeMenu}>
+            Recursos
           </NavLink>
           <NavLink to="/contacte" onClick={closeMenu}>
             Contacte

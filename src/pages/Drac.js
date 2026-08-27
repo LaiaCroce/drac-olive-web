@@ -1,71 +1,107 @@
+import Hero from "../components/Hero/Hero";
+import IntroSection from "../components/IntroSection/IntroSection";
+import FeatureSection from "../components/FeatureSection/FeatureSection";
+import ImageBanner from "../components/ImageBanner/ImageBanner";
+import Footer from "../components/Footer/Footer";
+
 import "./Drac.css";
 
 export default function Drac() {
   return (
-    <main className="drac-page">
+    <main>
 
-      {/* HERO */}
-      <section className="drac-hero">
-        <div className="drac-hero-content">
-          <p>La bèstia</p>
+      <Hero
+        kicker="La nostra bèstia"
+        title="El Drac Olivé"
+        description="El protagonista de les nostres actuacions. Foc, tradició i cultura popular des del 2004."
+      />
 
-          <h1>Drac Olivé</h1>
+      <IntroSection
+        eyebrow="El símbol de la colla"
+        title="Molt més que una bèstia de foc"
+        text="Aquest espai estarà dedicat exclusivament al Drac Olivé. Aquí explicarem la seva història, la fitxa tècnica, curiositats i tot allò que el fa únic."
+      />
 
-          <span>
-            Foc, tradició i cultura popular pels carrers d’Olesa.
-          </span>
+      <FeatureSection
+        eyebrow="La història"
+        title="Com va néixer el Drac"
+        paragraphs={[
+          "Aquí explicarem els orígens del Drac Olivé.",
+          "Qui el va construir, per què es va crear i com ha evolucionat amb els anys."
+        ]}
+        image=""
+        imageAlt="El Drac Olivé"
+      />
+
+      <section className="dragon-specs">
+
+        <div className="container">
+
+          <div className="dragon-specs__heading">
+
+            <p>Fitxa tècnica</p>
+
+            <h2>Característiques</h2>
+
+          </div>
+
+          <div className="dragon-specs__grid">
+
+            <div className="dragon-spec">
+              <span>Nom</span>
+              <strong>Drac Olivé</strong>
+            </div>
+
+            <div className="dragon-spec">
+              <span>Any</span>
+              <strong>2004</strong>
+            </div>
+
+            <div className="dragon-spec">
+              <span>Constructor</span>
+              <strong>Per definir</strong>
+            </div>
+
+            <div className="dragon-spec">
+              <span>Pes</span>
+              <strong>---</strong>
+            </div>
+
+            <div className="dragon-spec">
+              <span>Alçada</span>
+              <strong>---</strong>
+            </div>
+
+            <div className="dragon-spec">
+              <span>Punts de foc</span>
+              <strong>---</strong>
+            </div>
+
+          </div>
+
         </div>
+
       </section>
 
-      {/* HISTÒRIA */}
-      <section className="drac-history">
-        <div className="drac-history-text">
-          <p className="section-kicker">Història</p>
+      <FeatureSection
+        reverse
+        eyebrow="Curiositats"
+        title="Un símbol del poble"
+        paragraphs={[
+          "Aquí hi podrem explicar curiositats del Drac, restauracions, aniversaris o anècdotes.",
+          "També hi podrem afegir fotografies històriques."
+        ]}
+        image=""
+        imageAlt="Curiositats del Drac"
+      />
 
-          <h2>L’essència del foc.</h2>
+      <ImageBanner
+        eyebrow="Drac Olivé"
+        quote="Quan el Drac surt al carrer, el poble s'encén."
+        text="Aquest espai quedarà reservat per a una fotografia espectacular del Drac."
+      />
 
-          <p>
-            El Drac Olivé és el símbol de la nostra colla i representa
-            la força, la festa i la cultura popular.
-          </p>
-
-          <p>
-            Cada actuació és una combinació de foc, música i comunitat,
-            mantenint viva la tradició dels correfocs.
-          </p>
-        </div>
-
-        <div className="drac-history-image"></div>
-      </section>
-
-      {/* FITXA */}
-      <section className="drac-stats">
-        <p className="section-kicker">Fitxa tècnica</p>
-
-        <div className="drac-stats-grid">
-
-          <div className="drac-stat">
-            <h3>Pes</h3>
-            <span>95kg</span>
-          </div>
-
-          <div className="drac-stat">
-            <h3>Llargada</h3>
-            <span>3.5m</span>
-          </div>
-
-          <div className="drac-stat">
-            <h3>Punts de foc</h3>
-            <span>12</span>
-          </div>
-
-          <div className="drac-stat">
-            <h3>Portadors</h3>
-            <span>2</span>
-          </div>
-
-        </div>
-      </section>
+      <Footer />
 
     </main>
   );

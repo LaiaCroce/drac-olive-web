@@ -1,0 +1,67 @@
+.resources-grid{
+
+    padding:120px 0;
+
+}
+
+.resources-grid__cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.resource-card{
+
+    padding:36px;
+
+    border-radius:20px;
+
+    border:1px solid var(--border);
+
+    background:var(--bg-soft);
+
+    transition:.3s;
+
+}
+
+.resource-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--green-light);
+
+}
+
+.resource-card__icon{
+
+    font-size:3rem;
+
+    margin-bottom:24px;
+
+}
+
+.resource-card h3{
+
+    margin-bottom:16px;
+
+}
+
+.resource-card p{
+
+    margin-bottom:30px;
+
+    color:var(--text-soft);
+
+    line-height:1.7;
+
+}
+
+.resource-card button{
+
+    width:100%;
+
+}
