@@ -41,7 +41,7 @@ export default function Hero({
         <div className="hero-carousel" aria-hidden="true">
           {images.map((image, index) => (
             <div
-              key={image}
+              key={`${image}-${index}`}
               className={`hero-carousel__slide ${
                 index === activeImage ? "hero-carousel__slide--active" : ""
               }`}
@@ -110,7 +110,7 @@ export default function Hero({
             {images.map((image, index) => (
               <button
                 type="button"
-                key={`dot-${image}`}
+                key={`dot-${image}-${index}`}
                 className={`hero-carousel__dot ${
                   index === activeImage ? "hero-carousel__dot--active" : ""
                 }`}
