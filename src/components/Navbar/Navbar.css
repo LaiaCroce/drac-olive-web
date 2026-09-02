@@ -523,34 +523,55 @@
     display: none;
   }
 
-  .navbar-dropdown-menu {
-    position: static;
+  .navbar-dropdown {
+  width: 100%;
+}
 
-    width: 100%;
-    min-width: 0;
-    padding: 0 0 0 16px;
+.navbar-dropdown-menu {
+  position: static;
 
-    display: none;
+  width: 100%;
+  min-width: 0;
+  padding: 4px 0 8px 18px;
 
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-  }
+  border: 0;
+  border-radius: 0;
 
-  .navbar-dropdown:hover .navbar-dropdown-menu,
-  .navbar-dropdown:focus-within .navbar-dropdown-menu {
-    display: none;
-  }
+  background: transparent;
+  box-shadow: none;
 
-  .navbar-dropdown--open .navbar-dropdown-menu {
-    display: flex;
-    transform: none;
-  }
+  opacity: 1;
+  visibility: visible;
+
+  transform: none;
+}
+
+.navbar-dropdown-menu a {
+  padding: 12px 10px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  font-size: 0.82rem;
+  color: var(--text-soft);
+
+  transform: none;
+}
+
+.navbar-dropdown-menu a:hover,
+.navbar-dropdown-menu a.active {
+  color: var(--yellow);
+  background: rgba(51, 136, 44, 0.1);
+
+  transform: none;
+}
+
+.navbar-dropdown-arrow {
+  display: none;
+}
 
   .navbar-dropdown-menu a {
     padding: 14px 10px;
@@ -576,12 +597,61 @@
 
 @media (max-width: 480px) {
   .navbar {
+    height: 70px;
     padding: 0 16px;
+  }
+
+  .navbar--scrolled {
+    height: 64px;
   }
 
   .navbar-logo img,
   .navbar--scrolled .navbar-logo img {
-    height: 48px;
+    height: 46px;
+  }
+
+  .navbar-center {
+    top: 70px;
+
+    max-height: calc(100dvh - 70px);
+    padding: 18px 18px 28px;
+
+    gap: 22px;
+  }
+
+  .navbar--scrolled .navbar-center {
+    top: 64px;
+    max-height: calc(100dvh - 64px);
+  }
+
+  .navbar-links > a,
+  .navbar-dropdown-trigger {
+    padding: 13px 4px;
+
+    font-size: 0.88rem;
+  }
+
+  .navbar-dropdown-menu {
+    padding-left: 14px;
+  }
+
+  .navbar-dropdown-menu a {
+    padding: 11px 8px;
+    font-size: 0.78rem;
+  }
+
+  .navbar-toggle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .navbar-mobile-socials {
+    gap: 16px;
+  }
+
+  .navbar-mobile-socials .social-link {
+    width: 40px;
+    height: 40px;
   }
 }
 
