@@ -29,6 +29,18 @@ function Navbar() {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+  if (isMenuOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [isMenuOpen]);
+
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
@@ -61,7 +73,7 @@ function Navbar() {
           <NavLink to="/historia" onClick={closeMenu}>
             Història
           </NavLink>
-          <NavLink to="/drac">
+          <NavLink to="/drac" onClick={closeMenu}>
             El Drac
           </NavLink>
           <div className="navbar-dropdown">
