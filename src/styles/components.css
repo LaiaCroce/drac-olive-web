@@ -3,7 +3,6 @@
     calc(100% - (var(--page-padding) * 2)),
     var(--container-width)
   );
-
   margin-inline: auto;
 }
 
@@ -29,13 +28,11 @@
   padding-block: 150px;
 }
 
-.section {
-  padding: var(--space-xl) 0;
-}
-
 .eyebrow {
   margin: 0 0 16px;
+
   color: var(--green-light);
+
   font-weight: bold;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -49,6 +46,7 @@
   gap: 10px;
 
   padding: 14px 22px;
+
   border-radius: var(--radius-sm);
 
   font-weight: bold;
@@ -70,26 +68,52 @@
 .button-primary:hover {
   background: var(--orange);
   border-color: var(--orange);
+
   transform: translateY(-2px);
 }
 
 .button-secondary {
   border: 1px solid var(--green-light);
+
   background: transparent;
   color: var(--text);
 }
 
 .button-secondary:hover {
   background: rgba(51, 136, 44, 0.14);
+
   transform: translateY(-2px);
 }
 
 .card {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
+
   background: var(--bg-soft);
+
   box-shadow: var(--shadow-card);
 }
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .container {
+    width: calc(100% - (var(--page-padding-tablet) * 2));
+  }
+  .section {
+    padding-block: var(--space-lg);
+  }
+
+  .section--large {
+    padding-block: 110px;
+  }
+}
+
+/* =========================================================
+   MÒBIL
+   ========================================================= */
 
 @media (max-width: 600px) {
   .container {
@@ -97,10 +121,22 @@
   }
 
   .section {
-    padding-block: var(--space-lg);
+    padding-block: 64px;
+  }
+
+  .section--small {
+    padding-block: 48px;
   }
 
   .section--large {
-    padding-block: 100px;
+    padding-block: 80px;
+  }
+
+  .button-primary,
+  .button-secondary {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 13px 18px;
   }
 }
