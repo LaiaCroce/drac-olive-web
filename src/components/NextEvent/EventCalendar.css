@@ -1,5 +1,7 @@
 .event-calendar {
   min-width: 0;
+  width: 100%;
+
   padding: 30px;
 
   border: 1px solid var(--border);
@@ -14,9 +16,13 @@
     var(--bg-soft);
 }
 
+/* ===========================
+   CAPÇALERA
+=========================== */
+
 .calendar-header {
   display: grid;
-  grid-template-columns: 48px 1fr 48px;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
   align-items: center;
   gap: 16px;
 
@@ -24,16 +30,27 @@
 }
 
 .calendar-header h3 {
+  min-width: 0;
   margin: 0;
 
   color: var(--text);
+
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.2;
+
   text-align: center;
   text-transform: uppercase;
+
+  overflow-wrap: break-word;
 }
 
 .calendar-header button {
   width: 48px;
   height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -42,6 +59,7 @@
   color: var(--text);
 
   font-size: 1.3rem;
+
   cursor: pointer;
 
   transition:
@@ -53,13 +71,19 @@
 .calendar-header button:hover {
   border-color: var(--green-light);
   background: rgba(51, 136, 44, 0.12);
+
   transform: translateY(-2px);
 }
+
+/* ===========================
+   GRAELLA
+=========================== */
 
 .calendar-weekdays,
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
+
   gap: 9px;
 }
 
@@ -68,22 +92,34 @@
 }
 
 .calendar-weekdays span {
+  min-width: 0;
+
   color: var(--text-soft);
+
   font-size: 0.82rem;
   font-weight: bold;
+
   text-align: center;
   text-transform: uppercase;
 }
+
+/* ===========================
+   DIES
+=========================== */
 
 .calendar-day {
   position: relative;
 
   width: 100%;
+  min-width: 0;
+
   aspect-ratio: 1;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  padding: 0;
 
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -91,26 +127,34 @@
   background: #080808;
   color: var(--text-soft);
 
+  font-family: inherit;
+  font-size: 0.9rem;
   font-weight: bold;
+
+  overflow: hidden;
 }
 
 .calendar-day--empty {
   border-color: transparent;
+
   background: transparent;
 }
 
 .calendar-day:disabled {
   opacity: 0.5;
+
   cursor: default;
 }
 
 .calendar-day.today {
   border-color: var(--yellow);
+
   color: var(--yellow);
 }
 
 .calendar-day.has-event {
   border-color: var(--green-light);
+
   background: var(--green-primary);
   color: white;
 
@@ -126,6 +170,7 @@
 .calendar-day.has-event:hover {
   background: var(--orange);
   border-color: var(--yellow);
+
   color: black;
 
   transform: translateY(-3px);
@@ -134,18 +179,23 @@
 .calendar-day.selected {
   background: var(--orange);
   border-color: var(--yellow);
+
   color: black;
 
   box-shadow: 0 0 0 3px rgba(255, 210, 72, 0.13);
 }
 
+/* ===========================
+   COMPTADOR D'ESDEVENIMENTS
+=========================== */
+
 .calendar-event-count {
   position: absolute;
-  top: 4px;
-  right: 5px;
+  top: 3px;
+  right: 3px;
 
-  min-width: 17px;
-  height: 17px;
+  min-width: 16px;
+  height: 16px;
   padding: 0 4px;
 
   display: flex;
@@ -157,23 +207,53 @@
   background: var(--yellow);
   color: #050505;
 
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   line-height: 1;
 }
 
-@media (max-width: 480px) {
+/* ===========================
+   TABLET
+=========================== */
+
+@media (max-width: 900px) {
+  .event-calendar {
+    padding: 26px;
+  }
+
+  .calendar-weekdays,
+  .calendar-grid {
+    gap: 7px;
+  }
+}
+
+/* ===========================
+   MÒBIL
+=========================== */
+
+@media (max-width: 600px) {
   .event-calendar {
     padding: 20px 14px;
+
+    border-radius: 16px;
   }
 
   .calendar-header {
-    grid-template-columns: 42px 1fr 42px;
+    grid-template-columns: 40px minmax(0, 1fr) 40px;
+
     gap: 8px;
+
+    margin-bottom: 20px;
+  }
+
+  .calendar-header h3 {
+    font-size: 0.95rem;
   }
 
   .calendar-header button {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
+
+    font-size: 1.1rem;
   }
 
   .calendar-weekdays,
@@ -181,8 +261,67 @@
     gap: 5px;
   }
 
+  .calendar-weekdays {
+    margin-bottom: 7px;
+  }
+
+  .calendar-weekdays span {
+    font-size: 0.68rem;
+  }
+
   .calendar-day {
-    border-radius: 8px;
+    border-radius: 7px;
+
+    font-size: 0.78rem;
+  }
+
+  .calendar-event-count {
+    top: 2px;
+    right: 2px;
+
+    min-width: 14px;
+    height: 14px;
+
+    padding: 0 3px;
+
+    font-size: 0.52rem;
+  }
+}
+
+/* ===========================
+   MÒBILS PETITS
+=========================== */
+
+@media (max-width: 380px) {
+  .event-calendar {
+    padding: 16px 10px;
+  }
+
+  .calendar-header {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+  }
+
+  .calendar-header button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .calendar-header h3 {
     font-size: 0.82rem;
+  }
+
+  .calendar-weekdays,
+  .calendar-grid {
+    gap: 3px;
+  }
+
+  .calendar-weekdays span {
+    font-size: 0.62rem;
+  }
+
+  .calendar-day {
+    border-radius: 6px;
+
+    font-size: 0.72rem;
   }
 }
