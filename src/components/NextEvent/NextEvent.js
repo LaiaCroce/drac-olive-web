@@ -50,7 +50,7 @@ function NextEvent() {
         <div className="next-event-intro">
           {/*<p>Properes sortides</p>*/}
           <h2>No hi ha sortides programades</h2>
-          <Link to="/events" className="btn btn-secondary">
+          <Link to="/events" className="button-secondary">
             Veure agenda
           </Link>
         </div>
@@ -71,7 +71,7 @@ function NextEvent() {
             preparades.
           </span>
 
-          <Link to="/events" className="btn btn-secondary">
+          <Link to="/events" className="button-secondary">
             Veure agenda →
           </Link>
         </div>
