@@ -19,12 +19,6 @@ export default function Events() {
     
     const querySnapshot = await getDocs(eventsQuery);
 
-    console.log("Documents trobats:", querySnapshot.size);
-
-    querySnapshot.forEach((doc) => {
-      console.log("Document:", doc.id, doc.data());
-    });
-
     const data = querySnapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()

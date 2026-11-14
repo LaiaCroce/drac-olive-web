@@ -6,8 +6,6 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-
-
 import Home from "./pages/Home";
 import QuiSom from "./pages/QuiSom";
 import Historia from "./pages/Historia";

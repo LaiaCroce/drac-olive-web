@@ -3,7 +3,7 @@ import NextEvent from "../components/NextEvent/NextEvent";
 import StorySection from "../components/StorySection/StorySection";
 import FinalCTA from "../components/FinalCTA/FinalCTA";
 import Footer from "../components/Footer/Footer";
-import StatsSection from "../components/Home/StatsSecion";
+import StatsSection from "../components/Home/StatsSection";
 
 export default function Home() {
   return (
