@@ -6,8 +6,13 @@ import "./AdminHeader.css";
 export default function AdminHeader({ showBackButton = false }) {
   const navigate = useNavigate();
   const handleLogout = async () => {
-    await signOut(auth);
-    window.location.href = "/";
+    try {
+      await signOut(auth);
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Error tancant la sessió:", error);
+      alert("No s'ha pogut tancar la sessió");
+    }
   };
 
   return (

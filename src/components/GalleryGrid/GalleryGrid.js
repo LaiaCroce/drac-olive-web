@@ -39,7 +39,9 @@ export default function GalleryGrid() {
         <div className="gallery-grid__filters">
           {filters.map((item) => (
             <button
+              type="button"
               key={item.id}
+              aria-pressed={filter === item.id}
               className={filter === item.id ? "active" : ""}
               onClick={() => setFilter(item.id)}
             >

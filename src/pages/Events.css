@@ -1,7 +1,7 @@
 .events-page {
   padding-top: 80px;
   background: var(--bg);
-  min-height: 100vh;
+  min-height: 70vh;
 }
 
 .events-hero {
@@ -51,9 +51,16 @@
 
 .event-date {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   border-right: 1px solid var(--border);
+}
+
+.event-date small {
+  color: var(--text-soft);
+  font-size: 1rem;
 }
 
 .event-date span {
@@ -83,11 +90,22 @@
 }
 
 @media (max-width: 700px) {
+  .events-hero {
+    padding: 60px var(--page-padding-mobile) 44px;
+  }
+
+  .events-list {
+    padding: 40px var(--page-padding-mobile);
+  }
+
   .event-card {
     grid-template-columns: 1fr;
   }
 
   .event-date {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 12px;
     justify-content: flex-start;
     border-right: none;
     border-bottom: 1px solid var(--border);

@@ -1,67 +1,99 @@
 import { useEffect, useState } from "react";
-import { db } from "../services/firebase";
-import { collection, getDocs, query, orderBy, where, Timestamp } from "firebase/firestore";
+import { getUpcomingEvents } from "../services/events";
+import Footer from "../components/Footer/Footer";
 import "./Events.css";
 
 export default function Events() {
   const [events, setEvents] = useState([]);
+  const [status, setStatus] = useState("loading");
 
   useEffect(() => {
-  const fetchEvents = async () => {
-  try {
-    const today = Timestamp.now();
-    
-    const eventsQuery = query(
-      collection(db,"events"),
-      where("data", ">=", today),
-      orderBy("data", "asc")
-    );
-    
-    const querySnapshot = await getDocs(eventsQuery);
+    let isActive = true;
 
-    const data = querySnapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    }));
+    const fetchEvents = async () => {
+      try {
+        const data = await getUpcomingEvents();
 
-    setEvents(data);
-  } catch (error) {
-    console.error("Error carregant events:", error);
-  }
-};
+        if (!isActive) return;
 
-  fetchEvents();
-}, []);
+        setEvents(data);
+        setStatus("ready");
+      } catch (error) {
+        console.error("Error carregant events:", error);
 
-    return (
-    <main className="events-page">
-      <section className="events-hero">
-        <p>Agenda</p>
-        <h1>Properes sortides</h1>
-        <span>Consulta on podràs veure el Drac Olivé en acció.</span>
-      </section>
+        if (isActive) setStatus("error");
+      }
+    };
 
-      <section className="events-list">
-        {events.length === 0 ? (
-          <p className="events-empty">No hi ha esdeveniments encara.</p>
-        ) : (
-          events.map((e) => (
-            <article className="event-card" id={`event-${e.id}`} key={e.id}>
-              <div className="event-date">
-                <span>{e.data.toDate
-                  ? e.data.toDate().toLocaleDateString("ca-ES")
-                  : e.data}</span>
-              </div>
+    fetchEvents();
 
-              <div className="event-content">
-                <h2>{e.titol}</h2>
-                <p>{e.descripcio}</p>
-                <strong>📍 {e.lloc}</strong>
-              </div>
-            </article>
-          ))
-        )}
-      </section>
-    </main>
-    );
+    return () => {
+      isActive = false;
+    };
+  }, []);
+
+  const renderList = () => {
+    if (status === "loading") {
+      return <p className="events-empty">Carregant l’agenda…</p>;
+    }
+
+    if (status === "error") {
+      return (
+        <p className="events-empty" role="alert">
+          No hem pogut carregar l’agenda. Torna-ho a provar d’aquí a una
+          estona.
+        </p>
+      );
+    }
+
+    if (events.length === 0) {
+      return (
+        <p className="events-empty">
+          Ara mateix no hi ha sortides programades.
+        </p>
+      );
+    }
+
+    return events.map((e) => {
+      const date = e.data.toDate();
+
+      return (
+        <article className="event-card" id={`event-${e.id}`} key={e.id}>
+          <div className="event-date">
+            <span>{date.toLocaleDateString("ca-ES")}</span>
+            <small>
+              {date.toLocaleTimeString("ca-ES", {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </small>
+          </div>
+
+          <div className="event-content">
+            <h2>{e.titol}</h2>
+            {e.descripcio && <p>{e.descripcio}</p>}
+            {e.lloc && <strong>📍 {e.lloc}</strong>}
+          </div>
+        </article>
+      );
+    });
+  };
+
+  return (
+    <>
+      <main className="events-page">
+        <section className="events-hero">
+          <p>Agenda</p>
+          <h1>Properes sortides</h1>
+          <span>Consulta on podràs veure el Drac Olivé en acció.</span>
+        </section>
+
+        <section className="events-list" aria-busy={status === "loading"}>
+          {renderList()}
+        </section>
+      </main>
+
+      <Footer />
+    </>
+  );
 }

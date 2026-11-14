@@ -44,8 +44,7 @@ export default function Historia() {
         eyebrow="Drac Olivé"
         quote="La cultura popular es viu al carrer"
         text="Aquest espai quedarà preparat per afegir més endavant una fotografia representativa de la colla."
-        image=" "
-        />
+      />
       <Footer />
     </main>
   );

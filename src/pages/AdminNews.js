@@ -1,7 +1,10 @@
+import AdminLayout from "../components/Admin/AdminLayout";
+
 export default function AdminNews() {
   return (
-    <main style={{ padding: "140px 40px", color: "white" }}>
-      <h1>Admin Notícies</h1>
-    </main>
+    <AdminLayout
+      title="Notícies"
+      subtitle="Aquesta secció encara no està disponible."
+    />
   );
 }

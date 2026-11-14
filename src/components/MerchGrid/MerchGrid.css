@@ -64,6 +64,18 @@
 
 .merch-card{
 
+    display:block;
+
+    width:100%;
+
+    padding:0;
+
+    color:inherit;
+
+    font:inherit;
+
+    text-align:left;
+
     border:1px solid var(--border);
 
     border-radius:20px;
@@ -97,6 +109,14 @@
     align-items:center;
 
     border-bottom:1px solid var(--border);
+
+}
+
+.merch-card:focus-visible{
+
+    outline:2px solid var(--green-light);
+
+    outline-offset:3px;
 
 }
 

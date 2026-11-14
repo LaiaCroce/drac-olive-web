@@ -22,15 +22,20 @@ export default function CreateEventForm( { eventToEdit, clearEdit, onEventSaved 
 
   useEffect(() => {
 
-    if (eventToEdit) {
+    if (eventToEdit?.data?.toDate) {
       const date = eventToEdit.data.toDate();
-      const formattedDate = date.toISOString().slice(0, 16);
+      // datetime-local vol l'hora local; toISOString() la passaria a UTC
+      // i en editar l'esdeveniment l'hora es mouria 1 o 2 hores.
+      const pad = (value) => String(value).padStart(2, "0");
+      const formattedDate =
+        `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}` +
+        `T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 
       setForm({
-        titol: eventToEdit.titol,
+        titol: eventToEdit.titol || "",
         data: formattedDate,
-        lloc: eventToEdit.lloc,
-        descripcio: eventToEdit.descripcio,
+        lloc: eventToEdit.lloc || "",
+        descripcio: eventToEdit.descripcio || "",
       });
     }
   }, [eventToEdit]);
@@ -47,6 +52,11 @@ export default function CreateEventForm( { eventToEdit, clearEdit, onEventSaved 
 
     try {
       const eventDate = new Date(form.data);
+
+      if (Number.isNaN(eventDate.getTime())) {
+        alert("La data no és vàlida");
+        return;
+      }
 
       const eventData = {
         titol: form.titol,

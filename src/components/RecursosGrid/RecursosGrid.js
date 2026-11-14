@@ -64,7 +64,7 @@ export default function RecursosGrid() {
 
               <p>{resource.description}</p>
 
-              <button className="button-secondary">
+              <button type="button" className="button-secondary">
                 {resource.button}
               </button>
             </article>

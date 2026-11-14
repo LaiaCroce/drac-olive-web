@@ -18,12 +18,14 @@ export default function Hero({
   useEffect(() => {
     if (!hasCarousel || images.length <= 1) return undefined;
 
-    const timer = window.setInterval(() => {
+    // Amb un timeout per foto, el compte enrere torna a començar
+    // quan es canvia de fotografia amb les fletxes o els punts.
+    const timer = window.setTimeout(() => {
       setActiveImage((current) => (current + 1) % images.length);
     }, interval);
 
-    return () => window.clearInterval(timer);
-  }, [hasCarousel, images.length, interval]);
+    return () => window.clearTimeout(timer);
+  }, [hasCarousel, images.length, interval, activeImage]);
 
   const showPreviousImage = () => {
     setActiveImage((current) =>

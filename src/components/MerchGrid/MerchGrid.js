@@ -65,10 +65,12 @@ export default function MerchGrid() {
 
           {others.map((product) => (
 
-            <div
+            <button
+              type="button"
               key={product.id}
               className="merch-card"
               onClick={() => setFeatured(product)}
+              aria-label={`Veure ${product.name}`}
             >
 
               <div className="merch-card__image">
@@ -79,7 +81,7 @@ export default function MerchGrid() {
 
               <p>{product.price}</p>
 
-            </div>
+            </button>
 
           ))}
 

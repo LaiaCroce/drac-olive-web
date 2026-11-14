@@ -32,6 +32,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+}
+
+/* Sense sortides, carregant o amb error: un sol bloc */
+.next-event-layout--empty {
+  display: block;
+}
+
+.next-event-layout--empty .next-event-intro {
+  min-height: 160px;
+}
+
+.next-event-layout--empty .next-event-intro span {
+  max-width: 520px;
+}
+
+.next-event-intro .next-event-status {
+  margin: 0;
 }
 
 .next-event-intro p {
