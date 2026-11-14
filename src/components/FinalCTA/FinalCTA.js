@@ -13,11 +13,11 @@ function FinalCTA() {
         </h2>
 
         <div className="final-cta-buttons">
-          <Link to="/events" className="btn btn-primary">
+          <Link to="/events" className="button-primary">
             Properes actuacions
           </Link>
 
-          <Link to="/contacte" className="btn btn-secondary">
+          <Link to="/contacte" className="button-secondary">
             Contacta'ns
           </Link>
         </div>
