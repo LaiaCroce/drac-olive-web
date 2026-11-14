@@ -1,0 +1,64 @@
+rules_version = '2';
+
+// Regles de seguretat de Firestore per a la web del Drac Olivé.
+//
+// - Tothom pot LLEGIR el contingut públic (agenda, notícies, galeria...).
+// - Només els administradors poden CREAR, EDITAR o ESBORRAR.
+//
+// Un administrador és un usuari de Firebase Auth que té un document
+// a la col·lecció "admins" amb el seu UID com a identificador.
+// (Comprovar només "request.auth != null" no és prou segur: qualsevol
+// persona pot crear-se un compte amb l'apiKey pública de la web.)
+//
+// Com aplicar-les (en aquest ordre!):
+//   1. Authentication → copia l'UID del teu usuari.
+//   2. Firestore → crea la col·lecció "admins" amb un document
+//      que tingui aquest UID com a ID (pot estar buit).
+//   3. Firestore → Regles → enganxa aquest fitxer → Publica.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Contingut públic de la web
+    match /events/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /news/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /gallery/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /merch/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /collaborators/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Llista d'administradors: només es gestiona des de la consola de Firebase
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    // Qualsevol altra col·lecció queda tancada
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
