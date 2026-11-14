@@ -37,4 +37,6 @@
 
   /* Transition */
   --transition: 0.25s ease;
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.35s ease;
 }
