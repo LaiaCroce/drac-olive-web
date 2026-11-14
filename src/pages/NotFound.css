@@ -1,0 +1,10 @@
+.not-found {
+  padding-block: var(--space-lg);
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+}

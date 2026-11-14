@@ -22,6 +22,7 @@ import Drac from "./pages/Drac";
 import Contacte from "./pages/Contacte";
 import NoticiaDetall from "./pages/NoticiesDetall";
 import Recursos from "./pages/Recursos";
+import NotFound from "./pages/NotFound";
 
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -112,6 +113,9 @@ function Layout() {
               </ProtectedRoute>
             }
           />
+
+          {/* QUALSEVOL ALTRA ADREÇA */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </>
